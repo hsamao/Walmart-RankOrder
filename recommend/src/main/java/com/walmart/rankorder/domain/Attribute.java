@@ -1,4 +1,4 @@
-package com.walmart.rankorder.recommend;
+package com.walmart.rankorder.domain;
 
 /**
  * Created by samao on 2/25/16.
