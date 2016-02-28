@@ -1,13 +1,16 @@
 package com.walmart.rankorder;
 
-import com.walmart.rankorder.review.ReviewClient;
+import com.walmart.rankorder.domain.ReviewClient;
+import com.walmart.rankorder.service.ReviewRequest;
+import com.walmart.rankorder.service.ReviewResponse;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.client.RestTemplate;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -15,22 +18,39 @@ import org.springframework.web.client.RestTemplate;
 @WebAppConfiguration
 public class ReviewApplicationTests {
 
-	private static final Logger log = LoggerFactory.getLogger(ReviewApplicationTests.class);
+    @Value("${url}")
+    private String url;
+    @Value("${format}")
+    private String format;
+    @Value("${apiKey}")
+    private String apiKey;
 
-	private String url = "http://api.walmartlabs.com/v1/";
-	private String reviews = "reviews/";
-	private String format = "format=json";
-	private String apiKey = "apiKey=4std6f27cb9g4p4h8yhpmatr";
+    @Autowired
+    ReviewRequest reviewRequest;
 
-	RestTemplate restTemplate = new RestTemplate();
+    @Autowired
+    ReviewResponse reviewResponse;
 
-	@Test
-	public void restReviewClient() {
+    RestTemplate restTemplate = new RestTemplate();
 
-		ReviewClient reviewClient;
-		reviewClient = restTemplate.getForObject(url + reviews + "42608121" + "?" + format + "&" + apiKey, ReviewClient.class);
+    @Test
+    public void restReviewClient() {
 
-		log.info(reviewClient.toString());
-	}
+        ReviewClient reviewClient;
+        reviewClient = restTemplate.getForObject(url + "42608121" + "?" + format + "&" + apiKey, ReviewClient.class);
+
+        Assert.assertNotNull(reviewClient);
+    }
+
+    @Test
+    public void testRequestResponseReviewClient() {
+
+        reviewRequest.setItemId(42608121L);
+        String request = reviewRequest.getRequest();
+
+        reviewResponse.setReviewClient(restTemplate.getForObject(request, ReviewClient.class));
+
+        Assert.assertNotNull(reviewResponse);
+    }
 
 }

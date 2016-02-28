@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class RecommendRequest {
+public class ReviewRequest {
 
     @Value("${url}")
     private String url;
@@ -28,6 +28,6 @@ public class RecommendRequest {
     }
 
     public String getRequest() {
-        return url + itemId + "?" + format + "&" + apiKey;
+        return url + itemId + "?" + format + "&" + apiKey ;
     }
 }

@@ -6,8 +6,6 @@ import com.walmart.rankorder.service.SearchResponse;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -21,12 +19,8 @@ import org.springframework.web.client.RestTemplate;
 @WebAppConfiguration
 public class SearchApplicationTests {
 
-	private static final Logger log = LoggerFactory.getLogger(SearchApplicationTests.class);
-
 	@Value("${url}")
 	private String url;
-	@Value("${query}")
-	private String query;
 	@Value("${format}")
 	private String format;
 	@Value("${apiKey}")
@@ -44,7 +38,7 @@ public class SearchApplicationTests {
 	public void testSearchClient() {
 
 		SearchClient searchClient;
-		searchClient = restTemplate.getForObject(url + query + "ipod" + "&" + format + "&" + apiKey, SearchClient.class);
+		searchClient = restTemplate.getForObject(url + "ipod" + "&" + format + "&" + apiKey, SearchClient.class);
 		Assert.assertNotNull(searchClient);
 
 	}

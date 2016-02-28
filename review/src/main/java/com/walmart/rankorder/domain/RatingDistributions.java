@@ -1,4 +1,4 @@
-package com.walmart.rankorder.review;
+package com.walmart.rankorder.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
