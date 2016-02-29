@@ -36,38 +36,25 @@ public class GatewayManager {
 
 
     public GatewayResponse searchProductName(String productName) {
-        setSearchRequest(productName);
+        searchRequest.setProduct(productName);
+        gatewayRequest.setSearchRequest(searchRequest);
         gatewayResponse.setSearchClient(restTemplate.getForObject(gatewayRequest.getSearchRequest().getRequest(), SearchClient.class));
         return gatewayResponse;
     }
 
-    public void setSearchRequest(String productName) {
-        searchRequest.setProduct(productName);
-        gatewayRequest.setSearchRequest(searchRequest);
-    }
-
     public GatewayResponse recommendProduct(Long itemId) {
-        setRecommendRequest(itemId);
+        recommendRequest.setItemId(itemId);
+        gatewayRequest.setRecommendRequest(recommendRequest);
         gatewayResponse.setRecommendClient(restTemplate.getForObject(gatewayRequest.getRecommendRequest().getRequest(), RecommendClient.class));
         return gatewayResponse;
     }
 
-    public void setRecommendRequest(Long itemId) {
-        recommendRequest.setItemId(itemId);
-        gatewayRequest.setRecommendRequest(recommendRequest);
-    }
-
     public GatewayResponse reviewProduct(Long itemId) {
-        setReviewRequest(itemId);
+        reviewRequest.setItemId(itemId);
+        gatewayRequest.setReviewRequest(reviewRequest);
         gatewayResponse.setReviewClient(restTemplate.getForObject(gatewayRequest.getReviewRequest().getRequest(), ReviewClient.class));
         return gatewayResponse;
     }
-
-    public void setReviewRequest(Long itemId) {
-        reviewRequest.setItemId(itemId);
-        gatewayRequest.setReviewRequest(reviewRequest);
-    }
-
 
     public TreeSet<ReviewClient> rankOrder(String productName) {
         gatewayResponse = searchProductName(productName);
