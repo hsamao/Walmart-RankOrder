@@ -51,6 +51,22 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>com.rankorder</groupId>
+            <artifactId>search</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.rankorder</groupId>
+            <artifactId>recommend</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.rankorder</groupId>
+            <artifactId>review</artifactId>
+            <version>1.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

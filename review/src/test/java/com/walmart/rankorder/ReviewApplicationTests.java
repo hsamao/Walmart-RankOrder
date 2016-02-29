@@ -20,6 +20,8 @@ public class ReviewApplicationTests {
 
     @Value("${url}")
     private String url;
+    @Value("${review}")
+    private String review;
     @Value("${format}")
     private String format;
     @Value("${apiKey}")
@@ -37,7 +39,7 @@ public class ReviewApplicationTests {
     public void restReviewClient() {
 
         ReviewClient reviewClient;
-        reviewClient = restTemplate.getForObject(url + "42608121" + "?" + format + "&" + apiKey, ReviewClient.class);
+        reviewClient = restTemplate.getForObject(url + review + "42608121" + "?" + format + "&" + apiKey, ReviewClient.class);
 
         Assert.assertNotNull(reviewClient);
     }

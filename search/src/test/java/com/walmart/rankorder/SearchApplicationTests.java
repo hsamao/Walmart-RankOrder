@@ -21,6 +21,8 @@ public class SearchApplicationTests {
 
 	@Value("${url}")
 	private String url;
+	@Value("${query}")
+	private String query;
 	@Value("${format}")
 	private String format;
 	@Value("${apiKey}")
@@ -38,7 +40,7 @@ public class SearchApplicationTests {
 	public void testSearchClient() {
 
 		SearchClient searchClient;
-		searchClient = restTemplate.getForObject(url + "ipod" + "&" + format + "&" + apiKey, SearchClient.class);
+		searchClient = restTemplate.getForObject(url + query + "ipod" + "&" + format + "&" + apiKey, SearchClient.class);
 		Assert.assertNotNull(searchClient);
 
 	}

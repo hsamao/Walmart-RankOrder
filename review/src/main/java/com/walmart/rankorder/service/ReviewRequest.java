@@ -12,6 +12,8 @@ public class ReviewRequest {
 
     @Value("${url}")
     private String url;
+    @Value("${review}")
+    private String review;
     @Value("${format}")
     private String format;
     @Value("${apiKey}")
@@ -28,6 +30,6 @@ public class ReviewRequest {
     }
 
     public String getRequest() {
-        return url + itemId + "?" + format + "&" + apiKey ;
+        return url + review + itemId + "?" + format + "&" + apiKey;
     }
 }

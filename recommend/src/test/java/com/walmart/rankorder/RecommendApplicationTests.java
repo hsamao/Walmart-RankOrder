@@ -21,6 +21,8 @@ public class RecommendApplicationTests {
 
     @Value("${url}")
     private String url;
+    @Value("${item}")
+    private String item;
     @Value("${format}")
     private String format;
     @Value("${apiKey}")
@@ -37,7 +39,7 @@ public class RecommendApplicationTests {
     @Test
     public void testRecommendClient() {
 
-        RecommendClient recommendClient = restTemplate.getForObject(url + "42608121" + "?" + format + "&" + apiKey, RecommendClient.class);
+        RecommendClient recommendClient = restTemplate.getForObject(url + item + "42608121" + "?" + format + "&" + apiKey, RecommendClient.class);
         Assert.assertNotNull(recommendClient);
     }
 

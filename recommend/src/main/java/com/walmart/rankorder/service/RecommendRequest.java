@@ -12,6 +12,8 @@ public class RecommendRequest {
 
     @Value("${url}")
     private String url;
+    @Value("${item}")
+    private String item;
     @Value("${format}")
     private String format;
     @Value("${apiKey}")
@@ -28,6 +30,6 @@ public class RecommendRequest {
     }
 
     public String getRequest() {
-        return url + itemId + "?" + format + "&" + apiKey;
+        return url + item + itemId + "?" + format + "&" + apiKey;
     }
 }

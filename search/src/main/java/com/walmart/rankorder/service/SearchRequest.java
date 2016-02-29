@@ -11,13 +11,14 @@ public class SearchRequest {
 
     @Value("${url}")
     private String url;
+    @Value("${query}")
+    private String query;
     @Value("${format}")
     private String format;
     @Value("${apiKey}")
     private String apiKey;
 
     private String product;
-
 
     public String getProduct() {
         return product;
@@ -28,7 +29,7 @@ public class SearchRequest {
     }
 
     public String getRequest() {
-        return url  + product + "&" + format + "&" + apiKey;
+        return url + query  + product + "&" + format + "&" + apiKey;
     }
 
 
