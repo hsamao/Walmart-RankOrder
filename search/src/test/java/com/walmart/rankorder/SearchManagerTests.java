@@ -25,7 +25,7 @@ public class SearchManagerTests {
 
     @Test
     public void testSearchForProduct() {
-        searchManager.searchForProduct("ipod");
+        searchResponse = searchManager.searchForProduct("ipod");
         Assert.assertNotNull(searchResponse);
     }
 

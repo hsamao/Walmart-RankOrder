@@ -22,10 +22,9 @@ public class RecommendManagerTests {
     @Autowired
     RecommendManager recommendManager;
 
-
     @Test
-    public void testRecommendProduct(){
-        recommendManager.getRecommendProduct(42608121L);
+    public void testRecommendProduct() {
+        recommendResponse = recommendManager.getRecommendProduct(42608121L);
         Assert.assertNotNull(recommendResponse);
     }
 

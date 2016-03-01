@@ -29,7 +29,7 @@ public class SearchRequest {
     }
 
     public String getRequest() {
-        return url + query  + product + "&" + format + "&" + apiKey;
+        return url + query + product + "&" + format + "&" + apiKey;
     }
 
 

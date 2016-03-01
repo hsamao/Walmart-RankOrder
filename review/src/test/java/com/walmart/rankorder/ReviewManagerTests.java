@@ -23,7 +23,7 @@ public class ReviewManagerTests {
 
     @Test
    public void testGetReviewProduct(){
-        reviewManager.getReviewProduct(42608121L);
+        reviewResponse = reviewManager.getReviewProduct(42608121L);
         Assert.assertNotNull(reviewResponse);
     }
 

@@ -2,8 +2,6 @@ package com.walmart.rankorder.service;
 
 import com.walmart.rankorder.domain.ReviewProduct;
 
-import java.util.Comparator;
-
 /**
  * Created by samao on 2/29/16.
  */

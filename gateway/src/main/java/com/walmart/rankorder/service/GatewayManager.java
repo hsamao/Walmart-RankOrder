@@ -4,8 +4,9 @@ import com.walmart.rankorder.domain.ReviewProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -28,29 +29,44 @@ public class GatewayManager {
     GatewayResponse gatewayResponse;
 
 
+    /**
+     * @param productName
+     * @return
+     */
     public GatewayResponse searchProductByName(String productName) {
         gatewayResponse.setSearchResponse(searchManager.searchForProduct(productName));
         return gatewayResponse;
     }
 
+    /**
+     * @param itemId
+     * @return
+     */
     public GatewayResponse recommendProductByItemId(Long itemId) {
         gatewayResponse.setRecommendResponse(recommendManager.getRecommendProduct(itemId));
         return gatewayResponse;
     }
 
+    /**
+     * @param itemId
+     * @return
+     */
     public GatewayResponse reviewProductByItemId(Long itemId) {
         gatewayResponse.setReviewResponse(reviewManager.getReviewProduct(itemId));
         return gatewayResponse;
     }
 
-
-    public TreeSet<WeightedRank> orderProductByReview(String productName) {
+    /**
+     * @param productName
+     * @return
+     */
+    public Set<WeightedRank> orderProductByReview(String productName) {
 
         TreeSet<WeightedRank> orderedItems = new TreeSet<WeightedRank>(gatewayResponse);
 
         gatewayResponse.setSearchResponse(searchManager.searchForProduct(productName));
 
-        List<ReviewProduct> reviewProducts = new ArrayList<ReviewProduct>();
+        List<ReviewProduct> reviewProducts = new LinkedList<ReviewProduct>();
         int size = gatewayResponse.getSearchResponse().getSearchProduct().getItems().size();
         for (int i = 0; i < size; i++) {
             Long itemId = Long.valueOf(gatewayResponse.getSearchResponse().getSearchProduct().getItems().get(i).getItemId());
@@ -78,17 +94,11 @@ public class GatewayManager {
                     numberOfReviewers = reviewProducts.get(i).getReviewStatistics().getTotalReviewCount();
                 }
             }
-            weightedRank.setRank(calculation(numberOfStars, numberOfReviewers, totalOfReviewers));
+            weightedRank.setRank(numberOfStars * numberOfReviewers / totalOfReviewers * 5);
             weightedRank.setReviewProduct(reviewProducts.get(i));
             orderedItems.add(weightedRank);
 
         }
         return orderedItems;
-    }
-
-    public double calculation(double numberOfStars, double numberOfReviewers, double totalOfReviewers) {
-        double power = numberOfStars * numberOfReviewers;
-        double average = power / totalOfReviewers * 5;
-        return average;
     }
 }

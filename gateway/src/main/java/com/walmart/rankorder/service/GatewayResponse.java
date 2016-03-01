@@ -38,19 +38,6 @@ public class GatewayResponse implements Comparator<WeightedRank> {
         this.reviewResponse = reviewResponse;
     }
 
-    /*public int compare(ReviewProduct reviewProduct1, ReviewProduct reviewProduct2) {
-        int value = 1;
-        if (reviewProduct1.getReviewStatistics() != null && reviewProduct2.getReviewStatistics() != null) {
-            if (reviewProduct1.getReviewStatistics().getAverageOverallRating() != null
-                    && reviewProduct2.getReviewStatistics().getAverageOverallRating() != null) {
-                if (reviewProduct1.getReviewStatistics().getAverageOverallRating() > reviewProduct2.getReviewStatistics().getAverageOverallRating()) {
-                    value = -1;
-                }
-            }
-        }
-        return value;
-    }*/
-
     public int compare(WeightedRank weightedRank1, WeightedRank weightedRank2) {
         int value = 1;
         if (weightedRank1.getRank() != null && weightedRank2.getRank() != null) {

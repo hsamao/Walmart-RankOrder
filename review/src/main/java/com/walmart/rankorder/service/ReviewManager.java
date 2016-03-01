@@ -19,6 +19,11 @@ public class ReviewManager {
 
     RestTemplate restTemplate = new RestTemplate();
 
+    /**
+     *
+     * @param itemId
+     * @return
+     */
     public ReviewResponse getReviewProduct(Long itemId) {
         reviewRequest.setItemId(itemId);
         String request = reviewRequest.getRequest();

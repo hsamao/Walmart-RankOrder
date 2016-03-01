@@ -1,6 +1,8 @@
 package com.walmart.rankorder;
 
 import com.walmart.rankorder.service.GatewayManager;
+import com.walmart.rankorder.service.GatewayResponse;
+import com.walmart.rankorder.service.WeightedRank;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import java.util.Set;
+import java.util.TreeSet;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = GatewayApplication.class)
@@ -17,28 +22,33 @@ public class GatewayManagerTests {
     @Autowired
     GatewayManager gatewayManager;
 
+    @Autowired
+    GatewayResponse gatewayResponse;
+
+    Set<WeightedRank> weightedRanks = new TreeSet<WeightedRank>();
+
     @Test
     public void testSearchProductByName() {
-        gatewayManager.searchProductByName("ipod");
-        Assert.assertNotNull(gatewayManager);
+        gatewayResponse = gatewayManager.searchProductByName("ipod");
+        Assert.assertNotNull(gatewayResponse);
     }
 
     @Test
     public void testRecommendProductByItemId() {
-        gatewayManager.recommendProductByItemId(42608121L);
-        Assert.assertNotNull(gatewayManager);
+        gatewayResponse = gatewayManager.recommendProductByItemId(42608121L);
+        Assert.assertNotNull(gatewayResponse);
     }
 
     @Test
     public void testReviewProductByItemId() {
-        gatewayManager.reviewProductByItemId(42608121L);
-        Assert.assertNotNull(gatewayManager);
+        gatewayResponse = gatewayManager.reviewProductByItemId(42608121L);
+        Assert.assertNotNull(gatewayResponse);
     }
 
     @Test
     public void testOrderProductByReview() {
-        gatewayManager.orderProductByReview("ipod");
-        Assert.assertNotNull(gatewayManager);
+        weightedRanks = gatewayManager.orderProductByReview("ipod");
+        Assert.assertNotNull(weightedRanks);
     }
 
 

@@ -19,7 +19,11 @@ public class RecommendManager {
 
     RestTemplate restTemplate = new RestTemplate();
 
-
+    /**
+     *
+     * @param itemId
+     * @return
+     */
     public RecommendResponse getRecommendProduct(Long itemId) {
         recommendRequest.setItemId(itemId);
         String request = recommendRequest.getRequest();

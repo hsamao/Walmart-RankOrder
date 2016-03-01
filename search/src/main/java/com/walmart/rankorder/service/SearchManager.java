@@ -19,11 +19,15 @@ public class SearchManager {
 
     RestTemplate restTemplate = new RestTemplate();
 
-
-    public SearchResponse searchForProduct(String itemName){
+    /**
+     *
+     * @param itemName
+     * @return
+     */
+    public SearchResponse searchForProduct(String itemName) {
         searchRequest.setProduct(itemName);
         String request = searchRequest.getRequest();
-        searchResponse.setSearchProduct(restTemplate.getForObject(request,SearchProduct.class));
+        searchResponse.setSearchProduct(restTemplate.getForObject(request, SearchProduct.class));
         return searchResponse;
     }
 }
