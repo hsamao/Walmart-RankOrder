@@ -2,6 +2,6 @@
 .mvn
 target
 mvnw
-mvnw.com
+mvnw.cmd
 *.iml
 
