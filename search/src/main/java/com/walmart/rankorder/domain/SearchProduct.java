@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class SearchClient {
+public class SearchProduct {
 
     private String query;
     private String sort;

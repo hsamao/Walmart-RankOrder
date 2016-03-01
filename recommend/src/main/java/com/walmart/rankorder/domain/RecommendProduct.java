@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  */
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class RecommendClient {
+public class RecommendProduct {
 
     private Long itemId;
     private Long parentItemId;

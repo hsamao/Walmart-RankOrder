@@ -1,40 +1,19 @@
 package com.walmart.rankorder.service;
 
-import com.walmart.rankorder.domain.RecommendClient;
-import com.walmart.rankorder.domain.ReviewClient;
-import com.walmart.rankorder.domain.SearchClient;
+import com.walmart.rankorder.domain.ReviewProduct;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
-import java.util.List;
 
 /**
  * Created by samao on 2/28/16.
  */
 @Component
-public class GatewayResponse implements Comparator<ReviewClient> {
+public class GatewayResponse implements Comparator<ReviewProduct> {
 
-    List<ReviewClient> reviewClients;
-    SearchClient searchClient;
-    RecommendClient recommendClient;
     SearchResponse searchResponse;
-    ReviewClient reviewClient;
-
-    public List<ReviewClient> getReviewClients() {
-        return reviewClients;
-    }
-
-    public void setReviewClients(List<ReviewClient> reviewClients) {
-        this.reviewClients = reviewClients;
-    }
-
-    public SearchClient getSearchClient() {
-        return searchClient;
-    }
-
-    public void setSearchClient(SearchClient searchClient) {
-        this.searchClient = searchClient;
-    }
+    RecommendResponse recommendResponse;
+    ReviewResponse reviewResponse;
 
     public SearchResponse getSearchResponse() {
         return searchResponse;
@@ -44,28 +23,28 @@ public class GatewayResponse implements Comparator<ReviewClient> {
         this.searchResponse = searchResponse;
     }
 
-    public RecommendClient getRecommendClient() {
-        return recommendClient;
+    public RecommendResponse getRecommendResponse() {
+        return recommendResponse;
     }
 
-    public void setRecommendClient(RecommendClient recommendClient) {
-        this.recommendClient = recommendClient;
+    public void setRecommendResponse(RecommendResponse recommendResponse) {
+        this.recommendResponse = recommendResponse;
     }
 
-    public ReviewClient getReviewClient() {
-        return reviewClient;
+    public ReviewResponse getReviewResponse() {
+        return reviewResponse;
     }
 
-    public void setReviewClient(ReviewClient reviewClient) {
-        this.reviewClient = reviewClient;
+    public void setReviewResponse(ReviewResponse reviewResponse) {
+        this.reviewResponse = reviewResponse;
     }
 
-    public int compare(ReviewClient reviewClient1, ReviewClient reviewClient2) {
+    public int compare(ReviewProduct reviewProduct1, ReviewProduct reviewProduct2) {
         int value = 1;
-        if (reviewClient1.getReviewStatistics() != null && reviewClient2.getReviewStatistics() != null) {
-            if (reviewClient1.getReviewStatistics().getAverageOverallRating() != null
-                    && reviewClient2.getReviewStatistics().getAverageOverallRating() != null) {
-                if (reviewClient1.getReviewStatistics().getAverageOverallRating() > reviewClient2.getReviewStatistics().getAverageOverallRating()) {
+        if (reviewProduct1.getReviewStatistics() != null && reviewProduct2.getReviewStatistics() != null) {
+            if (reviewProduct1.getReviewStatistics().getAverageOverallRating() != null
+                    && reviewProduct2.getReviewStatistics().getAverageOverallRating() != null) {
+                if (reviewProduct1.getReviewStatistics().getAverageOverallRating() > reviewProduct2.getReviewStatistics().getAverageOverallRating()) {
                     value = -1;
                 }
             }

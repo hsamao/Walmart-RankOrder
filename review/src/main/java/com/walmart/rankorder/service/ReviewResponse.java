@@ -1,6 +1,6 @@
 package com.walmart.rankorder.service;
 
-import com.walmart.rankorder.domain.ReviewClient;
+import com.walmart.rankorder.domain.ReviewProduct;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class ReviewResponse {
 
-    private ReviewClient reviewClient;
+    private ReviewProduct reviewProduct;
 
-    public ReviewClient getReviewClient() {
-        return reviewClient;
+    public ReviewProduct getReviewProduct() {
+        return reviewProduct;
     }
 
-    public void setReviewClient(ReviewClient reviewClient) {
-        this.reviewClient = reviewClient;
+    public void setReviewProduct(ReviewProduct reviewProduct) {
+        this.reviewProduct = reviewProduct;
     }
 }

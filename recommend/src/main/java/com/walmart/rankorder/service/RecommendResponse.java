@@ -1,6 +1,6 @@
 package com.walmart.rankorder.service;
 
-import com.walmart.rankorder.domain.RecommendClient;
+import com.walmart.rankorder.domain.RecommendProduct;
 import org.springframework.stereotype.Component;
 
 /**
@@ -10,13 +10,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class RecommendResponse {
 
-    private RecommendClient recommendClient;
+    private RecommendProduct recommendProduct;
 
-    public RecommendClient getRecommendClient() {
-        return recommendClient;
+    public RecommendProduct getRecommendProduct() {
+        return recommendProduct;
     }
 
-    public void setRecommendClient(RecommendClient recommendClient) {
-        this.recommendClient = recommendClient;
+    public void setRecommendProduct(RecommendProduct recommendProduct) {
+        this.recommendProduct = recommendProduct;
     }
 }

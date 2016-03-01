@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  * Created by samao on 2/25/16.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ReviewClient {
+public class ReviewProduct {
 
     private Long itemId;
     private String name;

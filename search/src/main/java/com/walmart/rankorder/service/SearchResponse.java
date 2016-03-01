@@ -1,6 +1,6 @@
 package com.walmart.rankorder.service;
 
-import com.walmart.rankorder.domain.SearchClient;
+import com.walmart.rankorder.domain.SearchProduct;
 import org.springframework.stereotype.Component;
 
 
@@ -11,13 +11,13 @@ import org.springframework.stereotype.Component;
 @Component
 public class SearchResponse {
 
-    private SearchClient searchClient;
+    private SearchProduct searchProduct;
 
-    public SearchClient getSearchClient() {
-        return searchClient;
+    public SearchProduct getSearchProduct() {
+        return searchProduct;
     }
 
-    public void setSearchClient(SearchClient searchClient) {
-        this.searchClient = searchClient;
+    public void setSearchProduct(SearchProduct searchProduct) {
+        this.searchProduct = searchProduct;
     }
 }
