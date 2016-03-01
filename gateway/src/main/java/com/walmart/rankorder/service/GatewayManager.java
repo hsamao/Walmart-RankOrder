@@ -46,7 +46,6 @@ public class GatewayManager {
 
     public TreeSet<WeightedRank> orderProductByReview(String productName) {
 
-        WeightedRank weightedRank = new WeightedRank();
         TreeSet<WeightedRank> orderedItems = new TreeSet<WeightedRank>(gatewayResponse);
 
         gatewayResponse.setSearchResponse(searchManager.searchForProduct(productName));
@@ -70,13 +69,17 @@ public class GatewayManager {
         }
 
         for (int i = 0; i < size; i++) {
-            double numberOfStars = reviewProducts.get(i).getReviewStatistics().getAverageOverallRating();
-            double numberOfReviewers = reviewProducts.get(i).getReviewStatistics().getTotalReviewCount();
+            WeightedRank weightedRank = new WeightedRank();
+            double numberOfStars = 0;
+            double numberOfReviewers = 0;
+            if (reviewProducts.get(i).getReviewStatistics() != null) {
+                if (reviewProducts.get(i).getReviewStatistics().getAverageOverallRating() != null) {
+                    numberOfStars = reviewProducts.get(i).getReviewStatistics().getAverageOverallRating();
+                    numberOfReviewers = reviewProducts.get(i).getReviewStatistics().getTotalReviewCount();
+                }
+            }
             weightedRank.setRank(calculation(numberOfStars, numberOfReviewers, totalOfReviewers));
             weightedRank.setReviewProduct(reviewProducts.get(i));
-            orderedItems.add(weightedRank);
-            numberOfStars = 0;
-            numberOfReviewers = 0;
             orderedItems.add(weightedRank);
 
         }
