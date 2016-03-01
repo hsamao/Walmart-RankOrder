@@ -1,6 +1,5 @@
 package com.walmart.rankorder.service;
 
-import com.walmart.rankorder.domain.ReviewProduct;
 import org.springframework.stereotype.Component;
 
 import java.util.Comparator;
@@ -9,7 +8,7 @@ import java.util.Comparator;
  * Created by samao on 2/28/16.
  */
 @Component
-public class GatewayResponse implements Comparator<ReviewProduct> {
+public class GatewayResponse implements Comparator<WeightedRank> {
 
     SearchResponse searchResponse;
     RecommendResponse recommendResponse;
@@ -39,7 +38,7 @@ public class GatewayResponse implements Comparator<ReviewProduct> {
         this.reviewResponse = reviewResponse;
     }
 
-    public int compare(ReviewProduct reviewProduct1, ReviewProduct reviewProduct2) {
+    /*public int compare(ReviewProduct reviewProduct1, ReviewProduct reviewProduct2) {
         int value = 1;
         if (reviewProduct1.getReviewStatistics() != null && reviewProduct2.getReviewStatistics() != null) {
             if (reviewProduct1.getReviewStatistics().getAverageOverallRating() != null
@@ -47,6 +46,16 @@ public class GatewayResponse implements Comparator<ReviewProduct> {
                 if (reviewProduct1.getReviewStatistics().getAverageOverallRating() > reviewProduct2.getReviewStatistics().getAverageOverallRating()) {
                     value = -1;
                 }
+            }
+        }
+        return value;
+    }*/
+
+    public int compare(WeightedRank weightedRank1, WeightedRank weightedRank2) {
+        int value = 1;
+        if (weightedRank1.getRank() != null && weightedRank2.getRank() != null) {
+            if (weightedRank1.getRank() > weightedRank2.getRank()) {
+                value = -1;
             }
         }
         return value;
